@@ -29,4 +29,4 @@ Only add files after they have been captured from the actual running app. Keep i
 
 ## Add media to GitHub
 
-Place the captured files at the paths above, then commit them with a message such as `docs: add application screenshots and walkthrough`. The README can then embed the real screenshots and link the MP4. Until those files exist, the architecture diagram is the only repository visual and is not presented as an application screenshot.
+Place the captured files at the paths above, then commit them with a message such as `docs: add application screenshots and walkthrough`. The README can then embed the real screenshots and link the MP4. Until those files exist, the repository includes an architecture diagram and clearly labeled illustrative UI preview SVGs. The previews are mockups, not screenshots captured from the running application.
