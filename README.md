@@ -46,6 +46,10 @@ In industrial manufacturing and electrical drive systems, unexpected machine bre
 
 ## 3. Platform Architecture & Data Flow
 
+![IntelliMaint AI system architecture](assets/architecture-overview.svg)
+
+*Architecture overview: Streamlit interface → FastAPI service → ML inference and persistent data layer.*
+
 ```mermaid
 graph TD
     subgraph UI ["Interactive Frontend (Streamlit :8501)"]
@@ -247,7 +251,7 @@ Run all commands from Windows PowerShell within the project root:
 
 ### Step 1: Open Directory & Activate Virtual Environment
 ```powershell
-cd "c:\Users\sandhiya B\OneDrive\Desktop\IntelliMaint-AI"
+cd "path\to\IntelliMaint-AI"
 .\venv\Scripts\Activate.ps1
 ```
 
@@ -315,21 +319,17 @@ python scripts\run_frontend.py
 
 ---
 
-## 8. Automated Test Suite Results
+## 8. Automated Test Suite & Continuous Integration
 
-The project includes 30 automated tests executed via `pytest`:
+GitHub Actions runs the automated test suite on pushes and pull requests to `main`. The live CI badge at the top of this README links to the latest workflow result.
 
-```text
-tests/test_analytics.py ..................... PASSED [2/2]
-tests/test_api_endpoints.py ................. PASSED [7/7]
-tests/test_data_validation.py ............... PASSED [6/6]
-tests/test_database.py ...................... PASSED [6/6]
-tests/test_maintenance.py ................... PASSED [3/3]
-tests/test_ml_pipeline.py ................... PASSED [4/4]
-tests/test_reports.py ....................... PASSED [2/2]
+Run tests locally from the project root:
 
-======================= 30 passed in 5.74s =======================
+```powershell
+python -m pytest -v
 ```
+
+Coverage includes API endpoints, database persistence, input validation, ML feature engineering and inference, maintenance workflows, analytics, PDF reports, and UI metric-card HTML/CSS safety.
 
 ---
 
