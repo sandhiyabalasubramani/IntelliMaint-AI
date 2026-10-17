@@ -8,7 +8,7 @@ physics-based telemetry diagnostics, and feature contribution explanations.
 from __future__ import annotations
 import json
 from pathlib import Path
-from typing import Dict, Any, List, Union
+from typing import Dict, Any, List, Union, Tuple
 import joblib
 import numpy as np
 import pandas as pd
