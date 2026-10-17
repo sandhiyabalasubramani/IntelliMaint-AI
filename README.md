@@ -367,3 +367,16 @@ Coverage includes API endpoints, database persistence, input validation, ML feat
 ## 11. Disclaimer & Boundary Conditions
 
 **Academic & Educational Portfolio Notice:** IntelliMaint AI is developed for academic demonstration and software engineering portfolio purposes. Failure risk scores and diagnostic indicators represent statistical estimations and **must not supersede certified industrial safety systems**, emergency physical stop interlocks, or manufacturer machine operating manuals.
+
+
+---
+
+## Author
+
+**Sandhiya B**  
+B.E. Electrical & Electronics Engineering (EEE) Student  
+GitHub: [@sandhiyabalasubramani](https://github.com/sandhiyabalasubramani)  
+Project Repository: [IntelliMaint-AI](https://github.com/sandhiyabalasubramani/IntelliMaint-AI)  
+LinkedIn: [B. Sandhiya](https://www.linkedin.com/in/b-sandhiya-4b0bb8304)
+
+*Built as an engineering portfolio project combining EEE domain knowledge, predictive maintenance, machine learning, and full-stack Python development.*
