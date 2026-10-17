@@ -1,4 +1,6 @@
-# IntelliMaint AI — Intelligent Predictive Maintenance Platform
+# IntelliMaint-AI — Intelligent Predictive Maintenance Platform
+
+**AI-Powered Industrial Predictive Maintenance Platform**
 
 [![Python](https://img.shields.io/badge/Python-3.13%2B-blue.svg)](https://www.python.org/)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.115%2B-009688.svg)](https://fastapi.tiangolo.com/)
