@@ -63,7 +63,7 @@ See [Demo Media Guide](docs/DEMO_MEDIA.md) for capturing genuine screenshots and
 
 ## 4. Platform Architecture & Data Flow
 
-![IntelliMaint AI system architecture](assets/architecture-overview.svg)
+![IntelliMaint AI system architecture](https://raw.githubusercontent.com/sandhiyabalasubramani/IntelliMaint-AI/main/assets/architecture-overview.svg)
 
 *Architecture overview: Streamlit interface → FastAPI service → ML inference and persistent data layer.*
 
