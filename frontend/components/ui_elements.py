@@ -3,6 +3,8 @@ IntelliMaint AI — Frontend UI Styling & Chart Components
 """
 
 from __future__ import annotations
+from html import escape as html_escape
+import re
 from typing import Dict, Any, List
 import pandas as pd
 import plotly.express as px
@@ -98,13 +100,25 @@ def apply_industrial_theme():
     st.markdown(INDUSTRIAL_CSS, unsafe_allow_html=True)
 
 
+def _safe_metric_color(color: str) -> str:
+    """Accept only a six-digit hex color before placing it in inline CSS."""
+    candidate = str(color or "")
+    return candidate if re.fullmatch(r"#[0-9A-Fa-f]{6}", candidate) else "#334155"
+
+
 def render_metric_card(title: str, value: Any, subtext: str = "", border_color: str = "#334155"):
+    """Render a metric card while escaping dynamic text before HTML rendering."""
+    safe_title = html_escape(str(title))
+    safe_value = html_escape(str(value))
+    safe_subtext = html_escape(str(subtext))
+    safe_border_color = _safe_metric_color(border_color)
+
     st.markdown(
         f"""
-        <div class="metric-container" style="border-top: 3px solid {border_color};">
-            <div class="metric-title">{title}</div>
-            <div class="metric-value">{value}</div>
-            <div class="metric-sub">{subtext}</div>
+        <div class="metric-container" style="border-top: 3px solid {safe_border_color};">
+            <div class="metric-title">{safe_title}</div>
+            <div class="metric-value">{safe_value}</div>
+            <div class="metric-sub">{safe_subtext}</div>
         </div>
         """,
         unsafe_allow_html=True,
