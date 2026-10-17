@@ -49,13 +49,13 @@ In industrial manufacturing and electrical drive systems, unexpected machine bre
 > **Important:** These are polished illustrative UI previews created for project presentation, with mock values. They are **not real screenshots captured from the running application**. Replace them with authentic app screenshots after launching and testing the app locally.
 
 ### Fleet dashboard
-![Illustrative IntelliMaint AI fleet dashboard preview](assets/previews/fleet-dashboard-preview.svg)
+![Illustrative IntelliMaint AI fleet dashboard preview](https://raw.githubusercontent.com/sandhiyabalasubramani/IntelliMaint-AI/main/assets/previews/fleet-dashboard-preview.svg)
 
 ### Predictive risk analysis
-![Illustrative IntelliMaint AI risk analysis preview](assets/previews/risk-analysis-preview.svg)
+![Illustrative IntelliMaint AI risk analysis preview](https://raw.githubusercontent.com/sandhiyabalasubramani/IntelliMaint-AI/main/assets/previews/risk-analysis-preview.svg)
 
 ### Maintenance planner
-![Illustrative IntelliMaint AI maintenance planner preview](assets/previews/maintenance-planner-preview.svg)
+![Illustrative IntelliMaint AI maintenance planner preview](https://raw.githubusercontent.com/sandhiyabalasubramani/IntelliMaint-AI/main/assets/previews/maintenance-planner-preview.svg)
 
 See [Demo Media Guide](docs/DEMO_MEDIA.md) for capturing genuine screenshots and a screen recording.
 
