@@ -24,7 +24,7 @@ st.markdown("Register, track, search, and update industrial machinery across man
 # Actions bar
 a1, a2 = st.columns([3, 1])
 with a2:
-    if st.button("🔄 Reload Demo Machines", use_container_width=True):
+    if st.button("🔄 Reload Demo Machines", width="stretch"):
         from scripts.seed_demo_data import seed_database
         seed_database(verbose=False)
         st.success("Demonstration machines refreshed!")
@@ -61,7 +61,7 @@ with st.expander("➕ Register New Industrial Machine", expanded=False):
             )
 
         new_notes = st.text_area("Operational & Maintenance Notes", placeholder="Lubrication schedule, tooling specifications...")
-        submitted = st.form_submit_button("Register Machine Asset", use_container_width=True)
+        submitted = st.form_submit_button("Register Machine Asset", width="stretch")
 
         if submitted:
             if not new_id.strip() or not new_name.strip():
@@ -116,7 +116,7 @@ if filtered:
     df_m = pd.DataFrame(filtered)
     st.dataframe(
         df_m[["machine_id", "name", "machine_type", "department", "manufacturer", "installation_date", "operational_status", "notes"]],
-        use_container_width=True,
+        width="stretch",
         hide_index=True,
     )
 

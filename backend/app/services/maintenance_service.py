@@ -45,6 +45,12 @@ class MaintenanceService:
         return db.query(MaintenanceTask).filter(MaintenanceTask.work_order_no == work_order_no).first()
 
     @staticmethod
+    def get_task_by_id_or_no(db: Session, task_id_or_no: str | int) -> Optional[MaintenanceTask]:
+        if isinstance(task_id_or_no, int) or (isinstance(task_id_or_no, str) and str(task_id_or_no).isdigit()):
+            return MaintenanceService.get_task_by_id(db, int(task_id_or_no))
+        return MaintenanceService.get_task_by_work_order_no(db, str(task_id_or_no))
+
+    @staticmethod
     def create_task(db: Session, task_in: MaintenanceCreate) -> MaintenanceTask:
         # Check machine exists or create fallback
         machine = db.query(Machine).filter(Machine.machine_id == task_in.machine_id).first()
@@ -82,10 +88,7 @@ class MaintenanceService:
 
     @staticmethod
     def update_task(db: Session, task_id_or_no: str | int, task_in: MaintenanceUpdate) -> MaintenanceTask:
-        if isinstance(task_id_or_no, int) or (isinstance(task_id_or_no, str) and task_id_or_no.isdigit()):
-            task = MaintenanceService.get_task_by_id(db, int(task_id_or_no))
-        else:
-            task = MaintenanceService.get_task_by_work_order_no(db, str(task_id_or_no))
+        task = MaintenanceService.get_task_by_id_or_no(db, task_id_or_no)
 
         if not task:
             raise HTTPException(

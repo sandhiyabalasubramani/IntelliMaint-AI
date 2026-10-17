@@ -53,7 +53,7 @@ with c1:
     fig_power.add_hline(y=3500, line_dash="dash", line_color="#F59E0B", annotation_text="Min Power (3.5 kW)")
     fig_power.add_hline(y=9000, line_dash="dash", line_color="#EF4444", annotation_text="Max Power (9.0 kW)")
     fig_power.update_layout(height=380, paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)", font=dict(color="#CBD5E1"))
-    st.plotly_chart(fig_power, use_container_width=True)
+    st.plotly_chart(fig_power, width="stretch")
 
 with c2:
     fig_strain = px.scatter(
@@ -66,11 +66,11 @@ with c2:
         title="Torque vs Tool Wear (Mechanical Overstrain Envelope)",
     )
     fig_strain.update_layout(height=380, paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)", font=dict(color="#CBD5E1"))
-    st.plotly_chart(fig_strain, use_container_width=True)
+    st.plotly_chart(fig_strain, width="stretch")
 
 # Section 2: Thermal Dynamics
 st.markdown("### 🌡️ Thermal Dynamics & Heat Convection Analysis")
-st.plotly_chart(chart_temperature_delta(df), use_container_width=True)
+st.plotly_chart(chart_temperature_delta(df), width="stretch")
 
 # Section 3: Work Order Priority Breakdown
 if tasks:
@@ -87,7 +87,7 @@ if tasks:
             hole=0.45,
         )
         fig_wo_status.update_layout(height=340, paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)", font=dict(color="#CBD5E1"))
-        st.plotly_chart(fig_wo_status, use_container_width=True)
+        st.plotly_chart(fig_wo_status, width="stretch")
     with w2:
         fig_wo_prio = px.bar(
             df_wo,
@@ -97,4 +97,4 @@ if tasks:
             color_discrete_map={"Critical": "#EF4444", "High": "#F97316", "Medium": "#F59E0B", "Low": "#10B981"},
         )
         fig_wo_prio.update_layout(height=340, paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)", font=dict(color="#CBD5E1"), showlegend=False)
-        st.plotly_chart(fig_wo_prio, use_container_width=True)
+        st.plotly_chart(fig_wo_prio, width="stretch")

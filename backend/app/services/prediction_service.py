@@ -98,5 +98,6 @@ class PredictionService:
             physical_indicators=pred_res["physical_indicators"],
             contributing_factors=pred_res["contributing_factors"],
             suggested_actions=pred_res["suggested_actions"],
+            input_telemetry=telemetry_dict,
             disclaimer=pred_res["disclaimer"],
         )

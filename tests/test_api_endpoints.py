@@ -60,7 +60,8 @@ def test_invalid_request_body_returns_422(client):
     """Test 5: Submitting malformed or invalid request body triggers Pydantic HTTP 422 Unprocessable Entity."""
     # Missing required field 'machine_id' and 'name'
     resp = client.post("/api/v1/machines", json={"notes": "Incomplete machine"})
-    assert resp.status_code == status.HTTP_422_UNPROCESSABLE_ENTITY
+    http_422 = getattr(status, "HTTP_422_UNPROCESSABLE_CONTENT", 422)
+    assert resp.status_code == http_422
 
 
 def test_telemetry_post_and_get(client, sample_machine):

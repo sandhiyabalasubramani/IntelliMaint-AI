@@ -274,13 +274,41 @@ pytest -v
 ```powershell
 python scripts\run_backend.py
 ```
+*Direct alternative: `uvicorn backend.app.main:app --host 127.0.0.1 --port 8000 --reload`*
 *API interactive documentation available at: `http://127.0.0.1:8000/docs`*
 
 **Terminal 2 — Start Streamlit Frontend:**
 ```powershell
 python scripts\run_frontend.py
 ```
+*Direct alternative: `streamlit run frontend/app.py --server.port 8501`*
 *Interactive dashboard available at: `http://127.0.0.1:8501`*
+
+### Troubleshooting & Common Windows Gotchas
+
+1. **PowerShell Script Execution Policy:**
+   If `.\venv\Scripts\Activate.ps1` gives `UnauthorizedAccess`, allow scripts in the current terminal:
+   ```powershell
+   Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+   .\venv\Scripts\Activate.ps1
+   ```
+
+2. **Port Conflicts (8000 or 8501 in use):**
+   Check for listening processes on port 8000 or 8501:
+   ```powershell
+   Get-NetTCPConnection -LocalPort 8000 -ErrorAction SilentlyContinue
+   Get-NetTCPConnection -LocalPort 8501 -ErrorAction SilentlyContinue
+   ```
+   If a background process occupies the port, kill it via `Stop-Process -Id <PID> -Force` or adjust `API_PORT` in `.env`.
+
+3. **Repeated Auto-Reload Loops:**
+   The backend launcher `scripts/run_backend.py` restricts reload watch directories to `backend/` (`reload_dirs=['backend']`). This prevents SQLite database writes (`intellimaint.db`) or virtual environment files from triggering accidental recursive server restarts.
+
+4. **Missing Optional Dependencies:**
+   Ensure `requirements.txt` dependencies are installed inside the activated virtual environment:
+   ```powershell
+   pip install -r requirements.txt
+   ```
 
 ---
 

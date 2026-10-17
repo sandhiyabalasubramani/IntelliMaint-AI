@@ -38,7 +38,7 @@ with st.expander("➕ Create New Maintenance Work Order", expanded=False):
             wo_status = st.selectbox("Initial Status", ["Open", "In Progress"], index=0)
 
         wo_desc = st.text_area("Detailed Problem Statement & Scope", placeholder="Describe observed symptom, telemetry anomaly, or PM checklist...")
-        submitted = st.form_submit_button("Dispatch Work Order", use_container_width=True)
+        submitted = st.form_submit_button("Dispatch Work Order", width="stretch")
 
         if submitted:
             if not wo_title.strip():
@@ -84,7 +84,7 @@ if tasks:
     df_tasks = pd.DataFrame(tasks)
     st.dataframe(
         df_tasks[["work_order_no", "machine_id", "title", "priority", "status", "technician", "due_date", "created_at", "completed_at"]],
-        use_container_width=True,
+        width="stretch",
         hide_index=True,
     )
 
@@ -94,19 +94,38 @@ if tasks:
         selected_wo_no = st.selectbox("Select Work Order", [t["work_order_no"] for t in tasks])
     
     current_task = next((t for t in tasks if t["work_order_no"] == selected_wo_no), None)
-    
+    current_status = current_task.get("status", "Open") if current_task else "Open"
+
+    # Enforce workflow state machine transitions in the UI
+    allowed_transitions_map = {
+        "Open": ["Open", "In Progress", "Cancelled"],
+        "In Progress": ["In Progress", "Completed", "Cancelled", "Open"],
+        "Completed": ["Completed", "In Progress"],
+        "Cancelled": ["Cancelled", "Open"],
+    }
+    allowed_options = allowed_transitions_map.get(current_status, [current_status])
+    if current_status not in allowed_options:
+        allowed_options = [current_status] + allowed_options
+
     with u2:
         new_status = st.selectbox(
             "New Status",
-            ["Open", "In Progress", "Completed", "Cancelled"],
-            index=["Open", "In Progress", "Completed", "Cancelled"].index(current_task["status"]) if current_task else 0,
+            allowed_options,
+            index=allowed_options.index(current_status) if current_status in allowed_options else 0,
+            key=f"status_select_{selected_wo_no}",
+            help=f"Current: {current_status}. Valid transitions: {', '.join(allowed_options)}",
         )
     with u3:
         st.write("")
         st.write("")
-        update_btn = st.button("Apply Status Transition", use_container_width=True)
+        update_btn = st.button("Apply Status Transition", width="stretch")
 
-    resolution_notes = st.text_input("Completion / Progress Notes", value=current_task.get("notes") or "")
+    resolution_notes = st.text_input(
+        "Completion / Progress Notes",
+        value=current_task.get("notes") or "",
+        key=f"notes_input_{selected_wo_no}",
+        placeholder="Add progress details, technician observations, or resolution summary...",
+    )
 
     if update_btn and current_task:
         up_payload = {"status": new_status, "notes": resolution_notes}

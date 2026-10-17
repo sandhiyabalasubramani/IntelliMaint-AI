@@ -38,7 +38,7 @@ with t1:
                 data=f.read(),
                 file_name="sample_telemetry_template.csv",
                 mime="text/csv",
-                use_container_width=True,
+                width="stretch",
             )
     else:
         st.info("Template CSV is generating...")
@@ -51,7 +51,7 @@ with t2:
                 data=f.read(),
                 file_name="sample_telemetry_demo.csv",
                 mime="text/csv",
-                use_container_width=True,
+                width="stretch",
             )
     else:
         st.info("Demo CSV is generating...")
@@ -110,11 +110,11 @@ if telemetry_data:
     # Display Visualizations
     v1, v2 = st.columns(2)
     with v1:
-        st.plotly_chart(chart_speed_vs_torque(df_telem), use_container_width=True)
+        st.plotly_chart(chart_speed_vs_torque(df_telem), width="stretch")
     with v2:
-        st.plotly_chart(chart_tool_wear_histogram(df_telem), use_container_width=True)
+        st.plotly_chart(chart_tool_wear_histogram(df_telem), width="stretch")
 
-    st.plotly_chart(chart_temperature_delta(df_telem), use_container_width=True)
+    st.plotly_chart(chart_temperature_delta(df_telem), width="stretch")
 
     st.markdown("#### Ingested Sensor Readings Table")
     display_cols = [
@@ -130,6 +130,6 @@ if telemetry_data:
         "risk_tier",
     ]
     present_cols = [c for c in display_cols if c in df_telem.columns]
-    st.dataframe(df_telem[present_cols], use_container_width=True, hide_index=True)
+    st.dataframe(df_telem[present_cols], width="stretch", hide_index=True)
 else:
     st.info("No telemetry records found. Upload a CSV file or seed demo telemetry.")

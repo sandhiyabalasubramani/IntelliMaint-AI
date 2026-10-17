@@ -30,6 +30,7 @@ class PredictionResponse(BaseModel):
     physical_indicators: Optional[Dict[str, float]] = None
     contributing_factors: List[Dict[str, Any]] = []
     suggested_actions: List[str] = []
+    input_telemetry: Optional[Dict[str, Any]] = None
     disclaimer: str
 
     model_config = ConfigDict(from_attributes=True)

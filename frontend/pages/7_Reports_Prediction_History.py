@@ -67,7 +67,7 @@ if predictions:
         "model_version",
         "model_algorithm",
     ]
-    st.dataframe(df_preds[table_cols], use_container_width=True, hide_index=True)
+    st.dataframe(df_preds[table_cols], width="stretch", hide_index=True)
 
     st.markdown("---")
     st.markdown("### 🖨️ Compile & Download PDF Maintenance Certificate")
@@ -91,8 +91,8 @@ if predictions:
                 "operational_status": "OPERATIONAL",
             })
 
-            # Mock or fetch telemetry
-            telem_data = {
+            # Use real recorded input telemetry if available, otherwise nominal fallback
+            telem_data = target_pred.get("input_telemetry") or {
                 "Air temperature [K]": 298.5,
                 "Process temperature [K]": 308.7,
                 "Rotational speed [rpm]": 1500.0,
@@ -113,7 +113,7 @@ if predictions:
                 data=pdf_bytes,
                 file_name=f"Report_{target_pred['prediction_id']}.pdf",
                 mime="application/pdf",
-                use_container_width=True,
+                width="stretch",
             )
 
 else:

@@ -69,7 +69,7 @@ with c3:
     variant = st.selectbox("Tooling Variant Grade", ["L", "M", "H"], index=["L", "M", "H"].index(init_type))
 
 # Run Assessment Button
-if st.button("🚀 Execute Risk Assessment", type="primary", use_container_width=True):
+if st.button("🚀 Execute Risk Assessment", type="primary", width="stretch"):
     payload = {
         "machine_id": selected_machine["machine_id"],
         "air_temperature": air_temp,
@@ -137,23 +137,30 @@ if "latest_assessment" in st.session_state:
     with b1:
         # Create Maintenance Work Order from Assessment
         st.markdown("#### Dispatch Corrective Action")
-        if st.button("📋 Create Work Order from this Risk Assessment", use_container_width=True):
-            wo_payload = {
-                "machine_id": selected_machine["machine_id"],
-                "title": f"Corrective Action: {tier} Failure Risk on {selected_machine['machine_id']}",
-                "description": (
-                    f"Generated from ML Risk Assessment. Estimated Failure Probability: {prob:.1%}. "
-                    f"Actions: {'; '.join(actions[:2])}"
-                ),
-                "priority": "Critical" if tier == "High" else ("High" if tier == "Medium" else "Low"),
-                "status": "Open",
-                "notes": f"Observed: Air Temp {air_temp}K, Proc Temp {proc_temp}K, RPM {speed}, Torque {torque}Nm, Wear {wear}min.",
-            }
-            wo_res = api_client.create_maintenance_task(wo_payload)
-            if "error" in wo_res:
-                st.error(f"Failed to create work order: {wo_res['error']}")
-            else:
-                st.success(f"Work order '{wo_res.get('work_order_no')}' dispatched to Maintenance Planner!")
+        pred_identifier = res.get("prediction_id") or f"{selected_machine['machine_id']}_{tier}_{prob:.2f}"
+        dispatched_key = f"dispatched_wo_{pred_identifier}"
+
+        if st.session_state.get(dispatched_key):
+            st.info(f"✅ Work Order '{st.session_state[dispatched_key]}' already dispatched for this assessment.")
+        else:
+            if st.button("📋 Create Work Order from this Risk Assessment", width="stretch"):
+                wo_payload = {
+                    "machine_id": selected_machine["machine_id"],
+                    "title": f"Corrective Action: {tier} Failure Risk on {selected_machine['machine_id']}",
+                    "description": (
+                        f"Generated from ML Risk Assessment. Estimated Failure Probability: {prob:.1%}. "
+                        f"Actions: {'; '.join(actions[:2])}"
+                    ),
+                    "priority": "Critical" if tier == "High" else ("High" if tier == "Medium" else "Low"),
+                    "status": "Open",
+                    "notes": f"Observed: Air Temp {air_temp}K, Proc Temp {proc_temp}K, RPM {speed}, Torque {torque}Nm, Wear {wear}min.",
+                }
+                wo_res = api_client.create_maintenance_task(wo_payload)
+                if "error" in wo_res:
+                    st.error(f"Failed to create work order: {wo_res['error']}")
+                else:
+                    st.session_state[dispatched_key] = wo_res.get("work_order_no")
+                    st.success(f"Work order '{wo_res.get('work_order_no')}' dispatched to Maintenance Planner!")
 
     with b2:
         # Generate & Download PDF Report
@@ -170,5 +177,5 @@ if "latest_assessment" in st.session_state:
             data=pdf_bytes,
             file_name=f"Maintenance_Report_{selected_machine['machine_id']}.pdf",
             mime="application/pdf",
-            use_container_width=True,
+            width="stretch",
         )

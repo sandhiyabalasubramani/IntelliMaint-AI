@@ -76,14 +76,14 @@ if meta_file.exists():
     comp = meta.get("benchmark_comparison", {})
     if comp:
         df_comp = pd.DataFrame(comp).T
-        st.dataframe(df_comp, use_container_width=True)
+        st.dataframe(df_comp, width="stretch")
 
     # Feature importances
     st.markdown("#### Top Driving Model Features")
     fi = meta.get("feature_importances", {})
     if fi:
         df_fi = pd.DataFrame(list(fi.items()), columns=["Feature", "Importance Score"]).head(8)
-        st.dataframe(df_fi, use_container_width=True, hide_index=True)
+        st.dataframe(df_fi, width="stretch", hide_index=True)
 else:
     st.info("Model metadata file not yet created. Train model via ml/src/train.py.")
 

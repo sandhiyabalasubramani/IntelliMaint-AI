@@ -23,6 +23,7 @@ def main():
         host=settings.API_HOST,
         port=settings.API_PORT,
         reload=settings.DEBUG,
+        reload_dirs=[str(BASE_DIR / "backend")],
     )
 
 

@@ -47,7 +47,13 @@ def get_maintenance_task(
     db: Session = Depends(get_db),
 ):
     """Retrieve a single maintenance work order by internal ID or Work Order Number."""
-    return MaintenanceService.update_task(db, task_id, MaintenanceUpdate())
+    task = MaintenanceService.get_task_by_id_or_no(db, task_id)
+    if not task:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail=f"Maintenance task '{task_id}' not found.",
+        )
+    return task
 
 
 @router.patch("/{task_id}", response_model=MaintenanceResponse)

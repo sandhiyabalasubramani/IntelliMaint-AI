@@ -56,7 +56,7 @@ with st.sidebar:
     )
     st.markdown("---")
     
-    if st.button("🔄 Seed / Reset Demo Data", use_container_width=True):
+    if st.button("🔄 Seed / Reset Demo Data", width="stretch"):
         from scripts.seed_demo_data import seed_database
         seed_database(verbose=False)
         st.success("Demo dataset seeded!")
@@ -111,7 +111,7 @@ with c1:
 with c2:
     risk_dist = summary.get("risk_distribution", {})
     if any(risk_dist.values()):
-        st.plotly_chart(chart_risk_distribution(risk_dist), use_container_width=True)
+        st.plotly_chart(chart_risk_distribution(risk_dist), width="stretch")
     else:
         st.info("No risk distribution data available yet.")
 
@@ -122,23 +122,23 @@ q1, q2, q3, q4 = st.columns(4)
 with q1:
     st.markdown("#### 🏭 Fleet Dashboard")
     st.caption("Fleet-wide KPIs, real-time risk distribution, and machine health summaries.")
-    if st.button("Go to Dashboard", use_container_width=True):
+    if st.button("Go to Dashboard", width="stretch"):
         st.switch_page("pages/1_Fleet_Dashboard.py")
 
 with q2:
     st.markdown("#### 🔍 Risk Assessment")
     st.caption("Interactive telemetry simulator with real-time ML risk scoring and PDF export.")
-    if st.button("Run Risk Assessment", use_container_width=True):
+    if st.button("Run Risk Assessment", width="stretch"):
         st.switch_page("pages/4_Machine_Risk_Assessment.py")
 
 with q3:
     st.markdown("#### 📡 Upload Telemetry")
     st.caption("Batch CSV ingestion, automated validation, and sensor operating envelopes.")
-    if st.button("Upload Telemetry CSV", use_container_width=True):
+    if st.button("Upload Telemetry CSV", width="stretch"):
         st.switch_page("pages/3_Upload_Analyze_Telemetry.py")
 
 with q4:
     st.markdown("#### 📋 Maintenance Planner")
     st.caption("Manage corrective work order lifecycle, technicians, and completion logs.")
-    if st.button("Open Maintenance Planner", use_container_width=True):
+    if st.button("Open Maintenance Planner", width="stretch"):
         st.switch_page("pages/5_Maintenance_Planner.py")

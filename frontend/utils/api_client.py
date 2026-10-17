@@ -193,6 +193,7 @@ class IntelliMaintClient:
                     "model_algorithm": r.model_algorithm,
                     "contributing_factors": factors,
                     "suggested_actions": actions,
+                    "input_telemetry": json.loads(r.input_telemetry) if r.input_telemetry else None,
                     "disclaimer": "Educational and portfolio demonstration.",
                 })
             return out

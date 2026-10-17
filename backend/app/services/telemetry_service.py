@@ -29,7 +29,8 @@ COLUMN_MAPPINGS = {
 
 class TelemetryValidationException(HTTPException):
     def __init__(self, detail: str):
-        super().__init__(status_code=status.HTTP_422_UNPROCESSABLE_ENTITY, detail=detail)
+        http_422 = getattr(status, "HTTP_422_UNPROCESSABLE_CONTENT", 422)
+        super().__init__(status_code=http_422, detail=detail)
 
 
 class TelemetryService:

@@ -34,6 +34,7 @@ def get_predictions(
     for r in records:
         factors = json.loads(r.contributing_factors) if r.contributing_factors else []
         actions = json.loads(r.suggested_actions) if r.suggested_actions else []
+        input_telem = json.loads(r.input_telemetry) if r.input_telemetry else None
         results.append(
             PredictionResponse(
                 prediction_id=r.prediction_id,
@@ -46,6 +47,7 @@ def get_predictions(
                 model_algorithm=r.model_algorithm,
                 contributing_factors=factors,
                 suggested_actions=actions,
+                input_telemetry=input_telem,
                 disclaimer=(
                     "Educational and portfolio demonstration. Risk categories are operational indicators, "
                     "not certified industrial safety thresholds."
@@ -79,6 +81,7 @@ def get_prediction_by_id(
 
     factors = json.loads(r.contributing_factors) if r.contributing_factors else []
     actions = json.loads(r.suggested_actions) if r.suggested_actions else []
+    input_telem = json.loads(r.input_telemetry) if r.input_telemetry else None
 
     return PredictionResponse(
         prediction_id=r.prediction_id,
@@ -91,6 +94,7 @@ def get_prediction_by_id(
         model_algorithm=r.model_algorithm,
         contributing_factors=factors,
         suggested_actions=actions,
+        input_telemetry=input_telem,
         disclaimer=(
             "Educational and portfolio demonstration. Risk categories are operational indicators, "
             "not certified industrial safety thresholds."

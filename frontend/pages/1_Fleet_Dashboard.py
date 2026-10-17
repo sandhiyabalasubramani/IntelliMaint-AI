@@ -70,14 +70,14 @@ c1, c2 = st.columns([1, 1])
 with c1:
     risk_dist = summary.get("risk_distribution", {})
     if any(risk_dist.values()):
-        st.plotly_chart(chart_risk_distribution(risk_dist), use_container_width=True)
+        st.plotly_chart(chart_risk_distribution(risk_dist), width="stretch")
     else:
         st.info("No risk distribution data available.")
 
 with c2:
     type_dist = summary.get("machine_type_distribution", {})
     if any(type_dist.values()):
-        st.plotly_chart(chart_machine_types(type_dist), use_container_width=True)
+        st.plotly_chart(chart_machine_types(type_dist), width="stretch")
     else:
         st.info("No equipment category data available.")
 
@@ -106,7 +106,7 @@ if overview_data:
     # Display table
     st.dataframe(
         df_overview[["Machine ID", "Asset Name", "Equipment Category", "Facility Cell", "Status", "Failure Prob", "Risk Tier", "Active WOs"]],
-        use_container_width=True,
+        width="stretch",
         hide_index=True,
     )
 else:
