@@ -7,7 +7,7 @@
 [![Streamlit](https://img.shields.io/badge/Streamlit-1.40%2B-FF4B4B.svg)](https://streamlit.io/)
 [![SQLAlchemy](https://img.shields.io/badge/SQLAlchemy-2.0%2B-red.svg)](https://www.sqlalchemy.org/)
 [![Scikit--Learn](https://img.shields.io/badge/scikit--learn-1.5%2B-orange.svg)](https://scikit-learn.org/)
-[![Tests](https://img.shields.io/badge/Tests-30%20Passed-brightgreen.svg)]()
+[![CI](https://github.com/sandhiyabalasubramani/IntelliMaint-AI/actions/workflows/ci.yml/badge.svg)](https://github.com/sandhiyabalasubramani/IntelliMaint-AI/actions/workflows/ci.yml)
 
 > **Educational & Engineering Portfolio Project:** An end-to-end industrial software platform integrating physics-grounded telemetry analytics, machine learning failure risk prediction, closed-loop maintenance work orders, and automated PDF inspection reports.
 
