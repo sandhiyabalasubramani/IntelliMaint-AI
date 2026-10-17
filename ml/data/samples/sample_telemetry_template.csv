@@ -1,0 +1,4 @@
+Machine Reference,Type,Air temperature [K],Process temperature [K],Rotational speed [rpm],Torque [Nm],Tool wear [min]
+CNC-MILL-01,M,298.5,308.7,1500.0,42.0,45
+CNC-MILL-02,L,300.2,310.5,1420.0,48.5,120
+CNC-MILL-03,H,302.1,311.2,1610.0,38.2,15

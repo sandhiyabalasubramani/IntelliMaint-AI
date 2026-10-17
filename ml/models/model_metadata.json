@@ -1,0 +1,108 @@
+{
+  "model_version": "1.0.0",
+  "champion_algorithm": "Gradient Boosting",
+  "trained_at": "2026-10-17T06:50:34.353667+00:00",
+  "dataset_source": "UCI AI4I 2020 / Synthetic Telemetry",
+  "total_records": 10000,
+  "train_samples": 8000,
+  "test_samples": 2000,
+  "test_failure_count": 68,
+  "test_metrics": {
+    "accuracy": 0.9925,
+    "precision": 0.9649122807017544,
+    "recall": 0.8088235294117647,
+    "f1_score": 0.88,
+    "true_negatives": 1930,
+    "false_positives": 2,
+    "false_negatives": 13,
+    "true_positives": 55,
+    "total_samples": 2000,
+    "failure_prevalence": 0.034,
+    "confusion_matrix": [
+      [
+        1930,
+        2
+      ],
+      [
+        13,
+        55
+      ]
+    ],
+    "roc_auc": 0.9630488064791134,
+    "pr_auc": 0.8886700929667849,
+    "classification_report": {
+      "0": {
+        "precision": 0.993309315491508,
+        "recall": 0.9989648033126294,
+        "f1-score": 0.9961290322580645,
+        "support": 1932.0
+      },
+      "1": {
+        "precision": 0.9649122807017544,
+        "recall": 0.8088235294117647,
+        "f1-score": 0.88,
+        "support": 68.0
+      },
+      "accuracy": 0.9925,
+      "macro avg": {
+        "precision": 0.9791107980966312,
+        "recall": 0.9038941663621971,
+        "f1-score": 0.9380645161290322,
+        "support": 2000.0
+      },
+      "weighted avg": {
+        "precision": 0.9923438163086564,
+        "recall": 0.9925,
+        "f1-score": 0.9921806451612902,
+        "support": 2000.0
+      }
+    }
+  },
+  "benchmark_comparison": {
+    "Random Forest": {
+      "precision": 0.7733333333333333,
+      "recall": 0.8529411764705882,
+      "f1_score": 0.8111888111888111,
+      "roc_auc": 0.979075325782487,
+      "pr_auc": 0.8681091281100881,
+      "accuracy": 0.9865
+    },
+    "Gradient Boosting": {
+      "precision": 0.9649122807017544,
+      "recall": 0.8088235294117647,
+      "f1_score": 0.88,
+      "roc_auc": 0.9630488064791134,
+      "pr_auc": 0.8886700929667849,
+      "accuracy": 0.9925
+    },
+    "Logistic Regression": {
+      "precision": 0.18126888217522658,
+      "recall": 0.8823529411764706,
+      "f1_score": 0.3007518796992481,
+      "roc_auc": 0.9386569845329437,
+      "pr_auc": 0.41859540009085855,
+      "accuracy": 0.8605
+    }
+  },
+  "feature_importances": {
+    "strain_product": 0.27223742438666754,
+    "power_watts": 0.2628301381277607,
+    "Rotational speed [rpm]": 0.2572295096363433,
+    "temp_ratio": 0.06287151933750705,
+    "Tool wear [min]": 0.03736023825342477,
+    "Type_L": 0.03469257490424255,
+    "Torque [Nm]": 0.024845042820104333,
+    "torque_speed_ratio": 0.016916936433576907,
+    "Process temperature [K]": 0.012776685950589773,
+    "temp_diff": 0.008197403473576082,
+    "Air temperature [K]": 0.005849073140074253,
+    "Type_H": 0.0026440491373710922,
+    "Type_M": 0.0015494043987616276
+  },
+  "risk_thresholds": {
+    "low": "< 0.25",
+    "medium": "0.25 - 0.65",
+    "high": ">= 0.65"
+  },
+  "operational_disclaimer": "Educational and portfolio demonstration model. Risk predictions represent statistical estimations and must not supersede certified industrial safety systems."
+}
