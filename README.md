@@ -44,7 +44,24 @@ In industrial manufacturing and electrical drive systems, unexpected machine bre
 
 ---
 
-## 3. Platform Architecture & Data Flow
+## 3. UI Preview Gallery
+
+> **Important:** These are polished illustrative UI previews created for project presentation, with mock values. They are **not real screenshots captured from the running application**. Replace them with authentic app screenshots after launching and testing the app locally.
+
+### Fleet dashboard
+![Illustrative IntelliMaint AI fleet dashboard preview](assets/previews/fleet-dashboard-preview.svg)
+
+### Predictive risk analysis
+![Illustrative IntelliMaint AI risk analysis preview](assets/previews/risk-analysis-preview.svg)
+
+### Maintenance planner
+![Illustrative IntelliMaint AI maintenance planner preview](assets/previews/maintenance-planner-preview.svg)
+
+See [Demo Media Guide](docs/DEMO_MEDIA.md) for capturing genuine screenshots and a screen recording.
+
+---
+
+## 4. Platform Architecture & Data Flow
 
 ![IntelliMaint AI system architecture](assets/architecture-overview.svg)
 
@@ -101,7 +118,7 @@ graph TD
 
 ---
 
-## 4. Database Schema (Entity Relationships)
+## 5. Database Schema (Entity Relationships)
 
 ```mermaid
 erDiagram
@@ -158,7 +175,7 @@ erDiagram
 
 ---
 
-## 5. Machine Learning Pipeline & Actual Evaluation Metrics
+## 6. Machine Learning Pipeline & Actual Evaluation Metrics
 
 ### Dataset: UCI AI4I 2020 Predictive Maintenance
 - **Records:** 10,000 industrial machine telemetry observations
@@ -185,7 +202,7 @@ Evaluated on 2,000 held-out test records containing 68 actual machine breakdowns
 
 ---
 
-## 6. Project Directory Organization
+## 7. Project Directory Organization
 
 ```text
 IntelliMaint-AI/
@@ -245,7 +262,7 @@ IntelliMaint-AI/
 
 ---
 
-## 7. Windows PowerShell Quickstart Guide
+## 8. Windows PowerShell Quickstart Guide
 
 Run all commands from Windows PowerShell within the project root:
 
