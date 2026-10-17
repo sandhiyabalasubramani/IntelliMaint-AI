@@ -15,7 +15,7 @@
 
 ## 1. Project Overview & Problem Statement
 
-> **Project resources:** [System Architecture](docs/architecture.md) · [ML Methodology](docs/methodology.md) · [Production Readiness Checklist](docs/PRODUCTION_READINESS.md) · [Automated Tests](tests/) · [Sample Telemetry](ml/data/samples/sample_telemetry_demo.csv)
+> **Project resources:** [System Architecture](docs/architecture.md) · [ML Methodology](docs/methodology.md) · [Setup & Deployment](docs/DEPLOYMENT.md) · [Production Readiness](docs/PRODUCTION_READINESS.md) · [Contributing](CONTRIBUTING.md) · [Security Policy](SECURITY.md) · [Automated Tests](tests/) · [Sample Telemetry](ml/data/samples/sample_telemetry_demo.csv)
 
 
 In industrial manufacturing and electrical drive systems, unexpected machine breakdowns cause catastrophic downtime, expensive scrap rates, and severe spindle damage. Conventional manufacturing relies on:
