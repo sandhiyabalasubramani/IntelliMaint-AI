@@ -92,6 +92,73 @@ html, body, [class*="css"] {
     color: #CBD5E1;
     margin-bottom: 18px;
 }
+
+/* Product-grade layout polish */
+.stApp {
+    background:
+        radial-gradient(ellipse at 12% 0%, rgba(14, 165, 233, 0.08), transparent 35%),
+        linear-gradient(180deg, #0B1220 0%, #0F172A 100%);
+}
+[data-testid="stHeader"] {
+    background: rgba(11, 18, 32, 0.72);
+}
+[data-testid="stSidebar"] {
+    background: linear-gradient(180deg, #0B1628 0%, #111D31 100%);
+    border-right: 1px solid #26384F;
+}
+[data-testid="stSidebar"] [data-testid="stMarkdownContainer"] p {
+    color: #C7D5E5;
+}
+.block-container {
+    padding-top: 2rem;
+    padding-bottom: 3rem;
+    max-width: 1500px;
+}
+h1, h2, h3 {
+    letter-spacing: -0.025em;
+}
+h1 {
+    font-weight: 750;
+}
+.metric-container {
+    min-height: 128px;
+    transition: transform 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
+}
+.metric-container:hover {
+    transform: translateY(-2px);
+    border-color: #4B6B8E;
+    box-shadow: 0 10px 24px -12px rgba(56, 189, 248, 0.25);
+}
+.stButton > button, [data-testid="stDownloadButton"] button {
+    border-radius: 9px;
+    border: 1px solid #334B68;
+    font-weight: 600;
+    transition: all 150ms ease;
+}
+.stButton > button:hover, [data-testid="stDownloadButton"] button:hover {
+    border-color: #38BDF8;
+    color: #7DD3FC;
+    box-shadow: 0 4px 16px rgba(14, 165, 233, 0.12);
+}
+[data-testid="stDataFrame"], [data-testid="stTable"] {
+    border: 1px solid #26384F;
+    border-radius: 10px;
+    overflow: hidden;
+}
+@media (max-width: 768px) {
+    .block-container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+        padding-top: 1.25rem;
+    }
+    .metric-value {
+        font-size: 1.5rem;
+    }
+    .metric-container {
+        padding: 14px 16px;
+        min-height: 112px;
+    }
+}
 </style>
 """
 
