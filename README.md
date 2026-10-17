@@ -336,7 +336,7 @@ python scripts\run_frontend.py
 
 ---
 
-## 8. Automated Test Suite & Continuous Integration
+## 9. Automated Test Suite & Continuous Integration
 
 GitHub Actions runs the automated test suite on pushes and pull requests to `main`. The live CI badge at the top of this README links to the latest workflow result.
 
@@ -350,7 +350,7 @@ Coverage includes API endpoints, database persistence, input validation, ML feat
 
 ---
 
-## 9. Third-Year EEE Resume-Ready Project Summary
+## 10. Third-Year EEE Resume-Ready Project Summary
 
 ```markdown
 **IntelliMaint AI — Intelligent Predictive Maintenance Platform**
@@ -365,7 +365,7 @@ Coverage includes API endpoints, database persistence, input validation, ML feat
 
 ---
 
-## 10. Technical Interview Preparation (Q&A)
+## 11. Technical Interview Preparation (Q&A)
 
 ### Q1: Why did you prioritize F1-score and PR-AUC over Accuracy when evaluating your model?
 **Answer:** In predictive maintenance, failure is a rare event (in our benchmark, only 3.39% of records are failures). If a model predicts "No Failure" for every single sample, it would achieve 96.6% accuracy while missing 100% of actual breakdowns. Therefore, Accuracy is fundamentally misleading. We optimized for **F1-score** (harmonic mean of Precision and Recall) and **PR-AUC** to balance detecting genuine degradation events (Recall: 0.809) with avoiding expensive false alarms that disrupt manufacturing schedules (Precision: 0.965).
@@ -381,7 +381,7 @@ Coverage includes API endpoints, database persistence, input validation, ML feat
 
 ---
 
-## 11. Disclaimer & Boundary Conditions
+## 12. Disclaimer & Boundary Conditions
 
 **Academic & Educational Portfolio Notice:** IntelliMaint AI is developed for academic demonstration and software engineering portfolio purposes. Failure risk scores and diagnostic indicators represent statistical estimations and **must not supersede certified industrial safety systems**, emergency physical stop interlocks, or manufacturer machine operating manuals.
 
